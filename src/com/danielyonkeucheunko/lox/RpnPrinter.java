@@ -12,6 +12,11 @@ public class RpnPrinter implements Expr.Visitor<String> {
     }
 
     @Override
+    public String visitConditionalExpr(Expr.Conditional expr) {
+        return "if " + ' ' + expr.expression.accept(this) + ' ' + expr.trueBranch + ' ' + expr.falseBranch;
+    }
+
+    @Override
     public String visitGroupingExpr(Expr.Grouping expr) {
         return expr.expression.accept(this);
     }
